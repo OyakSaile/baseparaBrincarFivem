@@ -1028,20 +1028,11 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- Rich Presence
 -----------------------------------------------------------------------------------------------------------------------------------------
-Citizen.CreateThread(function()
-    while true do
-
---		SetDiscordAppId(494493006418673703)
-		SetDiscordAppId(848976568952029184)
---		SetDiscordRichPresenceAsset("logotive")
-		SetDiscordRichPresenceAsset("gringapresence")
---		SetRichPresence("Creative Roleplay")
-		SetRichPresence("Gringa Roleplay")
-
---      SetDiscordRichPresenceAssetText("Gringa Roleplay")
---      SetDiscordRichPresenceAssetSmall("gringapresence")
---      SetDiscordRichPresenceAssetSmallText("A Identidade visual da sua Cidade!")
---      SetDiscordRichPresenceAction(1, "DISCORD", "https://discord.gg/4j8ZR6QKdk")
-        Citizen.Wait(60000)
-    end
-end)
+function cRP.setDiscord(status)
+    SetDiscordAppId(904413379421151232)
+    SetDiscordRichPresenceAsset('r34')
+    SetDiscordRichPresenceAssetText('Coreia Teste')
+    SetDiscordRichPresenceAssetSmall('r34')
+    -- SetDiscordRichPresenceAssetSmallText('discord.gg/minhapika')
+    SetRichPresence(status)
+end 
