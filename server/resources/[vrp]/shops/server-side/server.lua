@@ -360,22 +360,24 @@ local shops = {
 	["policeStore"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
-		["perm"] = "Police",
 		["list"] = {
-			["handcuff"] = 1,
-			["vest"] = 1,
+			["WEAPON_PISTOL_MK2"] = 1,
+			["WEAPON_PISTOL_MK2_AMMO"] = 1,
 			["WEAPON_SMG"] = 1,
+			["WEAPON_SMG_AMMO"] = 1,
 			["WEAPON_CARBINERIFLE"] = 1,
+			["WEAPON_CARBINERIFLE_AMMO"] = 1,
 			["WEAPON_CARBINERIFLE_MK2"] = 1,
+			["WEAPON_CARBINERIFLE_MK2_AMMO"] = 1,
 			["WEAPON_MICROSMG"] = 1,
+			["WEAPON_MICROSMG_AMMO"] = 1,
 			["WEAPON_PUMPSHOTGUN"] = 1,
+			["WEAPON_PUMPSHOTGUN_AMMO"] = 1,
 			["WEAPON_STUNGUN"] = 1,
 			["WEAPON_NIGHTSTICK"] = 1,
 			["WEAPON_COMBATPISTOL"] = 1,
-			["WEAPON_SMG_AMMO"] = 1,
 			["WEAPON_SHOTGUN_AMMO"]= 1,
-			["WEAPON_RIFLE_AMMO"] = 1,
-			["WEAPON_PISTOL_AMMO"] = 1
+			["WEAPON_COMBATPISTOL_AMMO"] = 1
 		}
 	}
 }
