@@ -7,8 +7,8 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cnVRP = {}
-Tunnel.bindInterface("shops",cnVRP)
+cRP = {}
+Tunnel.bindInterface("shops",cRP)
 vCLIENT = Tunnel.getInterface("shops")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VARIABLES
@@ -18,134 +18,219 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-		    ["absolut"] = 215,
-			["notepad"] = 10,
-			["coffee"] = 195,
-			["chandon"] = 215,
-			["chocolate"] = 315,
-			["cigarette"] = 75,
-			["cola"] = 515,
-			["dewars"] = 215,
-			["energetic"] = 315,
-			["emptybottle"] = 650,
-			["hamburger"] = 900,
-			["hennessy"] = 215,
-			["lighter"] = 175,
-			["bread"] = 78,
-			["sandwich"] = 875,
-			["soda"] = 515,
-			["tacos"] = 745
+			["tacos"] = 150,
+			["hamburger"] = 150,
+			["hotdog"] = 150,
+			["soda"] = 150,
+			["cola"] = 150,
+			["chocolate"] = 150,
+			["water"] = 150,
+			["coffee"] = 150,
+			["sandwich"] = 150,
+			["energetic"] = 200,
+			["fries"] = 150
+		}
+	},
+	["dpStore"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "Paramedic",
+		["list"] = {
+			["tacos"] = 1000,
+			["hamburger"] = 1000,
+			["hotdog"] = 1000,
+			["soda"] = 1000,
+			["cola"] = 1000,
+			["water"] = 50,
+			["sandwich"] = 1000,
+			["fries"] = 1000
+		}
+	},
+	["lenhadorSell"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["list"] = {
+			["woodlog"] = 30,
+		}
+	},
+	["Drugs"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "Admin",
+		["list"] = {
+			["weed"] = 100
+		}
+	},
+	["dpStore2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["tacos"] = 1000,
+			["hamburger"] = 1000,
+			["hotdog"] = 1000,
+			["soda"] = 1000,
+			["cola"] = 1000,
+			["water"] = 50,
+			["sandwich"] = 1000,
+			["fries"] = 1000
+		}
+	},
+	["mecanicaStore"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["tires"] = 775,
+			["toolbox"] = 820,
+		}
+	},
+	["caçadorStore"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["list"] = {
+			["meat"] = 100,
+		}
+	},
+	["joalheriaStore"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["list"] = {
+			["goldbar"] = 50,
+		}
+	},
+	["theslostShop"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "TheLost",
+		["list"] = {
+			["toolbox"] = 50,
+		}
+	},
+	["ShopPearls"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["sugar"] = 500,
+			["caramelo"] = 500,
+			["massa"] = 500,
+		}
+	},
+	["armasStoreMC"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "Motoclub",
+		["list"] = {
+			["WEAPON_SPECIALCARBINE"] = 250000,
+			["WEAPON_ASSAULTRIFLE"] = 200000,
+			["WEAPON_PISTOL_MK2"] = 70000,
+			["WEAPON_GUSENBERG"] = 160000,
+			["WEAPON_SMG"] = 160000,
+			["WEAPON_PUMPSHOTGUN_MK2"] = 80000,
+			["WEAPON_SMG_AMMO"] = 80000,
+			["WEAPON_PISTOL_AMMO"] = 80000,
+			["WEAPON_RIFLE_AMMO"] = 80000,
+			["vest"] = 8000,
+			["hood"] = 10000,
+		}
+	},
+	["armasStoreMafia"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "Mafia",
+		["list"] = {
+			["WEAPON_SPECIALCARBINE"] = 250000,
+			["WEAPON_ASSAULTRIFLE"] = 200000,
+			["WEAPON_PISTOL_MK2"] = 70000,
+			["WEAPON_GUSENBERG"] = 160000,
+			["WEAPON_SMG"] = 160000,
+			["WEAPON_SMG_AMMO"] = 100,
+			["WEAPON_PISTOL_AMMO"] = 100,
+			["WEAPON_RIFLE_AMMO"] = 100,
+			["WEAPON_PUMPSHOTGUN"] = 80000,
+			["vest"] = 8000,
+			["hood"] = 10000,
+		}
+	},
+	["pharmacyStore"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["perm"] = "Paramedic",
+		["list"] = {
+			["gauze"] = 500,
+			["bandage"] = 650,
+			["analgesic"] = 50,
+			["medkit"] = 2000,
+			["sinkalmy"] = 1000,
+			["ritmoneury"] = 1750,
+			["adrenaline"] = 4650
+		}
+	},
+	["pierStore"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["soda"] = 20,
+			["chocolate"] = 10
 		}
 	},
 	["ammunationStore"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["WEAPON_BAT"] = 975,
-			["WEAPON_MACHETE"] = 975,
-			["WEAPON_FLASHLIGHT"] = 675,
-			["WEAPON_HATCHET"] = 975,
-			["WEAPON_BATTLEAXE"] = 975,
-			["WEAPON_STONE_HATCHET"] = 975,
-			["WEAPON_HAMMER"] = 725,
-			["GADGET_PARACHUTE"] = 475,
-			["WEAPON_KNUCKLE"] = 975,
-			["WEAPON_GOLFCLUB"] = 975,
-			["WEAPON_POOLCUE"] = 975
-		}
-	},
-	["normalpharmacyStore"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["list"] = {
-			["adrenaline"] = 975,
-			["analgesic"] = 105,
-			["bandage"] = 225,
-			["gauze"] = 175,
-			["warfarin"] = 525,
-			["ritmoneury"] = 475,
-			["sinkalmy"] = 325
-		}
-	},
-	["hospitalpharmacyStore"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["perm"] = "Paramedic",
-		["list"] = {
-			["adrenaline"] = 675,
-			["analgesic"] = 55,
-			["bandage"] = 105,
-			["gauze"] = 105,
-			["warfarin"] = 225,
-			["ritmoneury"] = 275,
-			["sinkalmy"] = 120
+			["GADGET_PARACHUTE"] = 1000,
+			["WEAPON_KNIFE"] = 4000,
+			["WEAPON_HATCHET"] = 4000,
+			["WEAPON_BAT"] = 4000,
+			["WEAPON_BATTLEAXE"] = 4000,
+			["WEAPON_BOTTLE"] = 4000,
+			["WEAPON_CROWBAR"] = 4000,
+			["WEAPON_DAGGER"] = 4000,
+			["WEAPON_GOLFCLUB"] = 4000,
+			["WEAPON_HAMMER"] = 4000,
+			["WEAPON_MACHETE"] = 4000,
+			["WEAPON_POOLCUE"] = 4000,
+			["WEAPON_STONE_HATCHET"] = 4000,
+			["WEAPON_SWITCHBLADE"] = 4000,
+			["WEAPON_WRENCH"] = 4000,
+			["WEAPON_KNUCKLE"] = 4000
 		}
 	},
 	["premiumStore"] = {
 		["mode"] = "Buy",
 		["type"] = "Premium",
 		["list"] = {
-			["premium01"] = 15,
-			["premium02"] = 25,
-			["premium03"] = 35,
-			["premium04"] = 45,
-			["premiumplate"] = 25,
-			["premiumname"] = 25,
-			["premiumgarage"] = 25,
-			["premiumpersonagem"] = 25,
-			["gemstone"] = 1
-		}
-	},
-	["jewelryStore"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["list"] = {
-			["ametista"] = 22,
-			["diamante"] = 26,
-			["esmeralda"] = 30,
-			["rubi"] = 22,
-			["safira"] = 20,
-			["turquesa"] = 20,
-			["ambar"] = 20
-		}
-	},
-	["huntingStore"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["list"] = {
-			["WEAPON_SWITCHBLADE"] = 725,
-			["WEAPON_MUSKET_AMMO"] = 7,
-			["WEAPON_MUSKET"] = 3250
-		}
-	},
-	["fishingStore"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["list"] = {
-			["bait"] = 10,
-			["fishingrod"] = 5000
+			["premium04"] = 100,
+			["premiumpersonagem"] = 150,
+			["premiumgarage"] = 30,
+			["premiumplate"] = 30,
+			["premiumname"] = 75,
+			["backpackpremium"] = 75,
+			["premiumchip"] = 20,
 		}
 	},
 	["fishingSell"] = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["list"] = {
-			["shrimp"] = 50,
-			["octopus"] = 45,
-			["carp"] = 40
+			["shrimp"] = 350,
+			["octopus"] = 250,
+			["carp"] = 150
 		}
 	},
 	["recyclingSell"] = {
 		["mode"] = "Sell",
 		["type"] = "Cash",
 		["list"] = {
-			["plastic"] = 15,
-			["glass"] = 15,
-			["rubber"] = 15,
-			["aluminum"] = 20,
-			["copper"] = 20,
-			["eletronics"] = 20,
-			["emptybottle"] = 20,
+			["plastic"] = 50,
+			["glass"] = 50,
+			["rubber"] = 50,
+			["aluminum"] = 50,
+			["copper"] = 50,
+		}
+	},
+	["lester"] = {
+		["mode"] = "Sell",
+		["type"] = "Cash",
+		["list"] = {
 			["lighter"] = 300,
 			["bucket"] = 100,
 			["divingsuit"] = 2500,
@@ -156,7 +241,7 @@ local shops = {
 			["cellphone"] = 1000,
 			["binoculars"] = 500,
 			["camera"] = 1000,
-			["vape"] = 15000,
+			["vape"] = 10000,
 			["pager"] = 3000,
 			["keyboard"] = 250,
 			["mouse"] = 225,
@@ -169,8 +254,19 @@ local shops = {
 			["ominitrix"] = 350,
 			["bracelet"] = 500,
 			["dildo"] = 250,
-			["notepad"] = 10,
-			["dollars2"] = 40
+			["postit"] = 10,
+			["lockpick2"] = 250,
+			["goldring"] = 500
+
+		}
+	},
+	["lester2"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["handcuff"] = 7750,
+			["c4"] = 7750,
+			["raceticket"] = 500
 		}
 	},
 	["registryStore"] = {
@@ -184,135 +280,109 @@ local shops = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["notepad"] = 20,
-			["emptybottle"] = 40,
-			["cigarette"] = 20,
-			["lighter"] = 600,
-			["sandwich"] = 18,
-			["cola"] = 18,
-			["teddy"] = 500,
+			["divingsuit"] = 2500,
+			["rope"] = 1000,
+			["teddy"] = 15,
 			["rose"] = 50,
-			["bucket"] = 200,
-			["compost"] = 10,
-			["cannabisseed"] = 10,
-			["silk"] = 3,
-			["plastic"] = 80,
-			["glass"] = 80,
-			["rubber"] = 80,
-			["aluminum"] = 120,
-			["copper"] = 120,
 			["paperbag"] = 50,
-			["raceticket"] = 500,
-			["firecracker"] = 1000
-		}
-	},
-	["barsStore"] = {
-		["mode"] = "Buy",
-		["type"] = "Cash",
-		["list"] = {
-			["energetic"] = 325,
-			["cola"] = 515,
-			["soda"] = 515,
-			["absolut"] = 200,
-			["chandon"] = 200,
-			["dewars"] = 200,
-			["hennessy"] = 200
+			["firecracker"] = 1000,
+			["bait"] = 10,
+			["radio"] = 2000,
+			["cellphone"] = 1500,
+			["binoculars"] = 1000,
+			["camera"] = 1000,
+			["fishingrod"] = 1000
 		}
 	},
 	["coffeeMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["coffee"] = 205
+			["coffee"] = 200
 		}
 	},
 	["sodaMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["soda"] = 515
+			["soda"] = 1000
 		}
 	},
 	["colaMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["cola"] = 515
+			["cola"] = 1000
 		}
 	},
 	["donutMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["donut"] = 9,
-			["chocolate"] = 315
+			["chocolate"] = 500
+		}
+	},
+	["snackMachine"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["chocolate"] = 500
 		}
 	},
 	["burgerMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["hamburger"] = 920
+			["hamburger"] = 1000
 		}
 	},
 	["hotdogMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["hotdog"] = 900
+			["hotdog"] = 1000
 		}
 	},
 	["waterMachine"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
 		["list"] = {
-			["water"] = 850
+			["water"] = 50
+		}
+	},
+	["redCash"] = {
+		["mode"] = "Buy",
+		["type"] = "Cash",
+		["list"] = {
+			["analgesic"] = 150,
 		}
 	},
 	["policeStore"] = {
 		["mode"] = "Buy",
 		["type"] = "Cash",
+		["perm"] = "Police",
 		["list"] = {
+			["handcuff"] = 1,
 			["vest"] = 1,
-			["gsrkit"] = 1,
-			["gdtkit"] = 1,
 			["WEAPON_SMG"] = 1,
---			["WEAPON_PUMPSHOTGUN"] = 20000,
 			["WEAPON_CARBINERIFLE"] = 1,
-			["WEAPON_FIREEXTINGUISHER"] = 1,
+			["WEAPON_CARBINERIFLE_MK2"] = 1,
+			["WEAPON_MICROSMG"] = 1,
+			["WEAPON_PUMPSHOTGUN"] = 1,
 			["WEAPON_STUNGUN"] = 1,
 			["WEAPON_NIGHTSTICK"] = 1,
 			["WEAPON_COMBATPISTOL"] = 1,
 			["WEAPON_SMG_AMMO"] = 1,
---			["WEAPON_SHOTGUN_AMMO"] = 10,
+			["WEAPON_SHOTGUN_AMMO"]= 1,
 			["WEAPON_RIFLE_AMMO"] = 1,
 			["WEAPON_PISTOL_AMMO"] = 1
-		}
-	},
-	["drugsSelling"] = {
-		["mode"] = "Buy",
-		["type"] = "Consume",
-		["item"] = "dollars2",
-		["list"] = {
-			["meth"] = 500,
-			["lean"] = 500,
-			["ecstasy"] = 500
-		}
-	},
-	["robberysSelling"] = {
-		["mode"] = "Sell",
-		["type"] = "Cash",
-		["list"] = {
-			["meth"] = 500,
-			["lean"] = 500,
-			["ecstasy"] = 500
 		}
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTPERM
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cnVRP.requestPerm(shopType)
+function cRP.requestPerm(shopType)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
@@ -332,51 +402,22 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- REQUESTSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cnVRP.requestShop(name)
+function cRP.requestShop(name)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
 	if user_id then
 		local inventoryShop = {}
 		for k,v in pairs(shops[name]["list"]) do
-			table.insert(inventoryShop,{ price = parseInt(v), name = vRP.itemNameList(k), desc = vRP.itemDescList(k), tipo = vRP.itemTipoList(k), unity = vRP.itemUnityList(k), economy = vRP.itemEconomyList(k), index = vRP.itemIndexList(k), key = k, weight = vRP.itemWeightList(k) })
+			table.insert(inventoryShop,{ price = parseInt(v), name = vRP.itemNameList(k), index = vRP.itemIndexList(k), key = k, weight = vRP.itemWeightList(k) })
 		end
 
 		local inventoryUser = {}
 		local inv = vRP.getInventory(user_id)
 		if inv then
 			for k,v in pairs(inv) do
-				if string.sub(v.item,1,9) == "toolboxes" then
-					local advFile = LoadResourceFile("logsystem","toolboxes.json")
-					local advDecode = json.decode(advFile)
-
-					v.durability = advDecode[v.item]
-				end
-				if v.item and v.timestamp then
-						local actualTime = os.time()
-						local finalTime = v.timestamp
-						local durabilityInSeconds = vRP.itemDurabilityList(v.item)
-						local startTime = (v.timestamp - durabilityInSeconds)
-						
-						local actualTimeInSeconds = (actualTime - startTime)
-						local porcentage = (actualTimeInSeconds/durabilityInSeconds)-1
-						if porcentage < 0 then porcentage = porcentage*-1 end
-						if porcentage <= 0.0 then
-							porcentage = 0.0
-						elseif porcentage >= 100.0 then
-							porcentage = 100.0
-						end
-						if porcentage then
-							v.durability = porcentage
-						end
-					end
-
 				v.amount = parseInt(v.amount)
 				v.name = vRP.itemNameList(v.item)
-				v.desc = vRP.itemDescList(v.item)
-				v.tipo = vRP.itemTipoList(v.item)
-				v.unity = vRP.itemUnityList(v.item)
-				v.economy = vRP.itemEconomyList(v.item)
 				v.peso = vRP.itemWeightList(v.item)
 				v.index = vRP.itemIndexList(v.item)
 				v.key = v.item
@@ -392,13 +433,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GETSHOPTYPE
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cnVRP.getShopType(name)
+function cRP.getShopType(name)
     return shops[name].mode
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- FUNCTIONSHOP
 -----------------------------------------------------------------------------------------------------------------------------------------
-function cnVRP.functionShops(shopType,shopItem,shopAmount,slot)
+function cRP.functionShops(shopType,shopItem,shopAmount,slot)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
@@ -410,20 +451,14 @@ function cnVRP.functionShops(shopType,shopItem,shopAmount,slot)
 				if vRP.computeInvWeight(parseInt(user_id)) + vRP.itemWeightList(shopItem) * parseInt(shopAmount) <= vRP.getBackpack(parseInt(user_id)) then
 					if shops[shopType]["type"] == "Cash" then
 						if shops[shopType]["list"][shopItem] then
-
-							if vRP.itemSubTypeList(shopItem) then
-								if vRP.getInventoryItemAmount(user_id,shopItem) > 0 then
-									TriggerClientEvent("Notify",source,"vermelho","Você já possui esse tipo de item.",5000) return
-								end
-							end
 							if vRP.paymentBank(parseInt(user_id),parseInt(shops[shopType]["list"][shopItem]*shopAmount)) then
+
 								if inv[tostring(slot)] then
 									vRP.giveInventoryItem(parseInt(user_id),shopItem,parseInt(shopAmount),false)
 								else
 									vRP.giveInventoryItem(parseInt(user_id),shopItem,parseInt(shopAmount),false,slot)
-								end						
-							else
-								TriggerClientEvent("Notify",source,"vermelho","Dólares insuficientes.",5000)
+								end							else
+								TriggerClientEvent("Notify",source,"vermelho","Dinheiro insuficiente.",5000)
 							end
 						end
 					elseif shops[shopType]["type"] == "Consume" then
@@ -445,21 +480,19 @@ function cnVRP.functionShops(shopType,shopItem,shopAmount,slot)
 							else
 								vRP.giveInventoryItem(parseInt(user_id),shopItem,parseInt(shopAmount),false,slot)
 							end							vRP.remGmsId(user_id,parseInt(shops[shopType]["list"][shopItem]*shopAmount))
-							TriggerClientEvent("Notify",source,"sucesso","Você comprou <b>"..vRP.format(parseInt(shopAmount)).."x "..vRP.itemNameList(shopItem).."</b> por <b>"..vRP.format(parseInt(shops[shopType]["list"][shopItem]*shopAmount)).." coins</b>.",5000)
+							TriggerClientEvent("Notify",source,"verde","Você comprou <b>"..vRP.format(parseInt(shopAmount)).."x "..vRP.itemNameList(shopItem).."</b> por <b>"..vRP.format(parseInt(shops[shopType]["list"][shopItem]*shopAmount)).." coins</b>.",5000)
 						else
 							TriggerClientEvent("Notify",source,"vermelho","Coins Insuficientes.",5000)
 						end
 					end
 				else
-					TriggerClientEvent("Notify",source,"vermelho","Mochila cheia.",5000)
+					TriggerClientEvent("Notify",source,"backpack","Mochila cheia.",5000)
 				end
 			elseif shops[shopType]["mode"] == "Sell" then
 				if shops[shopType]["list"][shopItem] then
 					if shops[shopType]["type"] == "Cash" then
-
 						if vRP.tryGetInventoryItem(parseInt(user_id),shopItem,parseInt(shopAmount),true,slot) then	
 							vRP.giveInventoryItem(parseInt(user_id),"dollars",parseInt(shops[shopType]["list"][shopItem]*shopAmount),false)
-							TriggerClientEvent("Notify",source,"amarelo","Você recebeu $"..shops[shopType]["list"][shopItem]*shopAmount.." Dólares.",5000)
 						end
 					elseif shops[shopType]["type"] == "Consume" then
 						if vRP.tryGetInventoryItem(parseInt(user_id),shopItem,parseInt(shopAmount),true,slot) then

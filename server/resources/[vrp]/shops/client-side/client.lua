@@ -7,14 +7,15 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONNECTION
 -----------------------------------------------------------------------------------------------------------------------------------------
-cnVRP = {}
-Tunnel.bindInterface("shops",cnVRP)
+cRP = {}
+Tunnel.bindInterface("shops",cRP)
 vSERVER = Tunnel.getInterface("shops")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CLOSE
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("close",function(data)
 	SetNuiFocus(false,false)
+	TransitionFromBlurred(1000)
 	SendNUIMessage({ action = "hideNUI" })
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -50,125 +51,6 @@ end)
 RegisterNetEvent("shops:Update")
 AddEventHandler("shops:Update",function(action)
 	SendNUIMessage({ action = action })
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:DEPARTAMENTSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:departamentStore",function()
-	if GetClockHours() >= 15 and GetClockHours() <= 20 then
-		SendNUIMessage({ action = "showNUI", name = tostring("departamentStore"), type = vSERVER.getShopType("departamentStore") })
-		SetNuiFocus(true,true)
-		TriggerEvent("sounds:source","shop",0.5)
-	else
-		TriggerEvent("Notify","amarelo","Loja fechada, a mesma só funciona das <b>15</b> ás <b>20</b> horas.",3000)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:AMMUNATIONSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:ammunationStore",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("ammunationStore"), type = vSERVER.getShopType("ammunationStore") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:NORMALPHARMACYSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:normalpharmacyStore",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("normalpharmacyStore"), type = vSERVER.getShopType("normalpharmacyStore") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:HOSPITALPHARMACYSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:hospitalpharmacyStore",function()
-	if vSERVER.requestPerm("hospitalpharmacyStore") then
-		SendNUIMessage({ action = "showNUI", name = tostring("hospitalpharmacyStore"), type = vSERVER.getShopType("hospitalpharmacyStore") })
-		SetNuiFocus(true,true)
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:MEGAMALL
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:megaMallStore",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("megaMallStore"), type = vSERVER.getShopType("megaMallStore") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:RECYCLINGSELL
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:recyclingSell",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("recyclingSell"), type = vSERVER.getShopType("recyclingSell") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:BARSSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:barsStore",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("barsStore"), type = vSERVER.getShopType("barsStore") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:JEWELRYSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:jewelryStore",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("jewelryStore"), type = vSERVER.getShopType("jewelryStore") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:HUNTINGSTORE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:huntingStore",function()
-		SendNUIMessage({ action = "showNUI", name = tostring("huntingStore"), type = vSERVER.getShopType("huntingStore") })
-		SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:COFFEEMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:coffeeMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("coffeeMachine"), type = vSERVER.getShopType("coffeeMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:COLAMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:colaMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("colaMachine"), type = vSERVER.getShopType("colaMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:SODAMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:sodaMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("sodaMachine"), type = vSERVER.getShopType("sodaMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:DONUTMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:donutMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("donutMachine"), type = vSERVER.getShopType("donutMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:BURGERMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:burgerMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("burgerMachine"), type = vSERVER.getShopType("burgerMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:HOTDOGMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:hotdogMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("hotdogMachine"), type = vSERVER.getShopType("hotdogMachine") })
-	SetNuiFocus(true,true)
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- SHOPS:WATERMACHINE
------------------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("shops:waterMachine",function()
-	SendNUIMessage({ action = "showNUI", name = tostring("waterMachine"), type = vSERVER.getShopType("waterMachine") })
-	SetNuiFocus(true,true)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- SHOPLIST
@@ -231,7 +113,7 @@ local shopList = {
 	{ 716.56,-961.59,30.4,"lester2",false,false },
 	{ 813.14,-281.25,66.47,"Drugs",false,false },
 	-- { 2525.69,-342.87,101.9,"policeStore",false,false },
-	{ 159.94,-995.51,29.36,"policeStore",false,false },
+	{ 452.46,-980.16,30.69,"policeStore",false,false },
 	-- { 416.41,-1902.86,25.62,"redCash",false,false },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -239,6 +121,7 @@ local shopList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
+
 	while true do
 		local timeDistance = 500
 		local ped = PlayerPedId()
@@ -251,10 +134,10 @@ Citizen.CreateThread(function()
 					DrawText3D(v[1],v[2],v[3],"~g~E~w~   ABRIR")
 					if IsControlJustPressed(1,38) and vSERVER.requestPerm(v[4]) then
 						SetNuiFocus(true,true)
-						-- TransitionToBlurred(1000)
+						TransitionToBlurred(1000)
 						SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
 						if v[5] then
-							TriggerEvent("sounds:source","shop",0.5)
+							TriggerEvent("vrp_sound:source","shop",0.5)
 						end
 					end
 				end
@@ -263,41 +146,41 @@ Citizen.CreateThread(function()
 		Citizen.Wait(timeDistance)
 	end
 end)
--- -----------------------------------------------------------------------------------------------------------------------------------------
--- -- THREADOPEN
--- -----------------------------------------------------------------------------------------------------------------------------------------
+
 -- Citizen.CreateThread(function()
--- 	SetNuiFocus(false,false)
-
--- 	while trgit ue do
--- 		local timeDistance = 500
--- 		local ped = PlayerPedId()
--- 		if not IsPedInAnyVehicle(ped) then
--- 			local coords = GetEntityCoords(ped)
--- 			for k,v in pairs(shopList) do
--- 				local distance = #(coords - vector3(v[1],v[2],v[3]))
--- 				if distance <= 1 then
--- 					timeDistance = 4
-
--- 					if IsControlJustPressed(1,38) then
--- 						if v[6] then
--- 								SetNuiFocus(true,true)
--- 								SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
--- 						else
--- 							if vSERVER.requestPerm(v[4]) then
--- 								SetNuiFocus(true,true)
--- 								SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
--- 							end
--- 						end
--- 					end
--- 				end
--- 			end
--- 		end
-
--- 		Citizen.Wait(timeDistance)
+-- 	local innerTable = {}
+-- 	for k,v in pairs(shopList) do
+-- 		table.insert(innerTable,{ v[1],v[2],v[3],2,"E","Loja de Ultilidades","Pressione para abrir" })
 -- 	end
+
+-- 	TriggerEvent("hoverfy:insertTable",innerTable)
 -- end)
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROPSHOPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local propShops = {
+	{ "prop_vend_coffe_01","coffeeMachine" },
+	{ "prop_vend_soda_02","sodaMachine" },
+	{ "prop_vend_soda_01","colaMachine" },
+	{ "v_ret_247_donuts","donutMachine" },
+	{ "prop_burgerstand_01","burgerMachine" },
+	{ "prop_hotdogstand_01","hotdogMachine" },
+	{ "prop_vend_snak_01","snackMachine" },
+	{ "prop_vend_water_01","waterMachine" }
+}
+
+RegisterCommand("comprar",function(source,args)
+	local ped = PlayerPedId()
+	local coords = GetEntityCoords(ped)
+
+	for k,v in pairs(propShops) do
+		if DoesObjectOfTypeExistAtCoords(coords,0.7,GetHashKey(v[1]),true) then
+			SetNuiFocus(true,true)
+			SendNUIMessage({ action = "showNUI", name = tostring(v[2]), type = vSERVER.getShopType(v[2]) })
+		end
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D
 -----------------------------------------------------------------------------------------------------------------------------------------
