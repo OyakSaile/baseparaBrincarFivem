@@ -239,7 +239,6 @@ local shopList = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
-
 	while true do
 		local timeDistance = 500
 		local ped = PlayerPedId()
@@ -252,10 +251,10 @@ Citizen.CreateThread(function()
 					DrawText3D(v[1],v[2],v[3],"~g~E~w~   ABRIR")
 					if IsControlJustPressed(1,38) and vSERVER.requestPerm(v[4]) then
 						SetNuiFocus(true,true)
-						TransitionToBlurred(1000)
+						-- TransitionToBlurred(1000)
 						SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
 						if v[5] then
-							TriggerEvent("vrp_sound:source","shop",0.5)
+							TriggerEvent("sounds:source","shop",0.5)
 						end
 					end
 				end
@@ -264,6 +263,40 @@ Citizen.CreateThread(function()
 		Citizen.Wait(timeDistance)
 	end
 end)
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+-- -- THREADOPEN
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+-- Citizen.CreateThread(function()
+-- 	SetNuiFocus(false,false)
+
+-- 	while trgit ue do
+-- 		local timeDistance = 500
+-- 		local ped = PlayerPedId()
+-- 		if not IsPedInAnyVehicle(ped) then
+-- 			local coords = GetEntityCoords(ped)
+-- 			for k,v in pairs(shopList) do
+-- 				local distance = #(coords - vector3(v[1],v[2],v[3]))
+-- 				if distance <= 1 then
+-- 					timeDistance = 4
+
+-- 					if IsControlJustPressed(1,38) then
+-- 						if v[6] then
+-- 								SetNuiFocus(true,true)
+-- 								SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
+-- 						else
+-- 							if vSERVER.requestPerm(v[4]) then
+-- 								SetNuiFocus(true,true)
+-- 								SendNUIMessage({ action = "showNUI", name = tostring(v[4]), type = vSERVER.getShopType(v[4]) })
+-- 							end
+-- 						end
+-- 					end
+-- 				end
+-- 			end
+-- 		end
+
+-- 		Citizen.Wait(timeDistance)
+-- 	end
+-- end)
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- DRAWTEXT3D
